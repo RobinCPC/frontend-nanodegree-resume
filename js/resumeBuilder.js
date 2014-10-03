@@ -97,22 +97,122 @@ var work = {
 		"employer" : "PMC",
 		"title" : "Engineer",
 		"dates" : "Aug. 2012 - Present",
-		"description" : ""
+		"description" : "building controller for industrial robot arm"
 	},
 	{
 		"employer" : "National Taiwan University",
 		"title" : "Research Assistant",
 		"dates" : "Jan. 2009 - Jul. 2010",
-		"description" : ""
+		"description" : "building robot eyes mechanism"
 	}
 	]
 }
 
 var projects = {
-	"projects" : "Demonstrate the application of 14-axis Dual-Arm Robot",
+	"title" : "Demonstrate the application of 14-axis Dual-Arm Robot",
 	"dates" : "2014",
 	"description" : "As a member of developing team, I was in charge of",
 	"video" : [
 		"https://www.youtube.com/watch?v=C8_pQGrsqw8"
 	]
 }
+
+//===================================================
+// add picture
+var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
+$("#header").append(formattedPic);
+
+//===================================================
+// add if statement
+if (bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+	var formattedskill = HTMLskills.replace("%data%", bio.skills);
+	$("#skills").append(formattedskill);
+}
+
+/*
+// tesitng while loop
+var cameron = {};
+cameron.job = "course dev";
+
+var courses = 0;
+while (cameron.job === "course dev"){
+	console.log("make course");
+	//makeCourse();
+	courses = courses + 1;
+	if(courses === 10){
+		cameron.job = "learning specialist";
+	}
+}
+
+console.log(cameron.job);
+
+// testing for loop
+for(var i=0; i < 9; i++){
+	console.log(i);
+}
+*/
+//======================================================
+// Add work experience by for loop
+/*for (job in work.jobs) {
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	$(".work-entry:last").append(formattedEmployerTitle);
+
+	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+	$(".work-entry:last").append(formattedDates);
+	$(".work-entry:last").append(formattedDescription);
+}*/
+
+//=========================================================
+// Put work into function
+function displayWork() {
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedEmployerTitle = formattedEmployer + formattedTitle;
+		$(".work-entry:last").append(formattedEmployerTitle);
+
+		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formattedDates);
+		$(".work-entry:last").append(formattedDescription);
+	}
+}
+
+displayWork();
+
+//=========================================================
+//international name
+function inName(name){
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+
+	return name[0] + " " + name[1];
+}
+
+$("#main").append(internationalizeButton);
+
+projects.display = function(){
+
+	$("#projects").append(HTMLprojectStart);
+	var formattedTitle = HTMLprojectTitle.replace("%data%", projects.title);
+	$(".project-entry:last").append(formattedTitle);
+
+	var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
+	var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
+	$(".project-entry:last").append(formattedDates);
+	$(".project-entry:last").append(formattedDescription);
+
+};
+
+projects.display();
+
+// add a map on resume
+$("#mapDiv").append(googleMap);
