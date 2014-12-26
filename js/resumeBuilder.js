@@ -54,6 +54,7 @@ var bio = {
 		"mobile" : "201-314-0603",
 		"email" : "chienpinchen@gmail.com",
 		"github" : "RobinCPC",
+		"blog" : "http://chienpinchen.blogspot.tw/",
 		"location" : "Taiwan"
 	},
 	"WelcomeMessage" : "Hola",
@@ -124,11 +125,23 @@ $("#header").append(formattedPic);
 
 //===================================================
 // add if statement
+$("#header").append(HTMLskillsStart);
 if (bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
 	var formattedskill = HTMLskills.replace("%data%", bio.skills);
 	$("#skills").append(formattedskill);
 }
+
+//$("#topContacts").append(HTMLcontactGeneric);
+var topConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
+$("#topContacts").append(topConMob);
+var topConMail = HTMLemail.replace("%data%", bio.contacts.email);
+$("#topContacts").append(topConMail);
+var topConGit = HTMLgithub.replace("%data%", bio.contacts.github);
+$("#topContacts").append(topConGit);
+var topConBlog = HTMLblog.replace("%data%", bio.contacts.blog);
+$("#topContacts").append(topConBlog);
+var topConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
+$("#topContacts").append(topConLoc);
 
 /*
 // tesitng while loop
