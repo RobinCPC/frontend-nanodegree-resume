@@ -57,7 +57,7 @@ var bio = {
 		"blog" : "http://chienpinchen.blogspot.tw/",
 		"location" : "Taiwan"
 	},
-	"WelcomeMessage" : "Hola",
+	"WelcomeMessage" : "Hello! I am an engineer at Robotic Control Department of Precision Machinery Research Development Center in Taiwan. I am working on developing kinematic algorithms of robot arm and CAD-Based Application.",
 	"skills" : [
 		"Robotics", "C++", "MATLAB", "Python"
 	],
@@ -71,23 +71,31 @@ var education = {
 			"city" : "Taipei, Taiwan",
 			"degree" : "BS",
 			"major" : ["Mechanical Engineer"],
-			"dates" : 2007
+			"dates" : 2007,
+			"url" : "http://www.ntu.edu.tw/"
 		},
 		{
 			"name" : "Columbia University",
 			"city" : "New York City, New York, US",
 			"degree" : "MS",
 			"major" : ["Mechanical Engineer"],
-			"dates" : 2011
+			"dates" : 2011,
+			"url"	: "http://www.columbia.edu/"
 		}
 	]
 	,
-	"onlineCOurses" : [
+	"onlineCourses" : [
 	{
 		"title" : "JavaScript Basic",
 		"school" : "Udacity",
 		"dates" : 2014,
 		"url" : "http://www.udacity.com/course/ud804"
+	},
+	{
+		"title" : "Intro to Computer Science",
+		"school" : "Udacity",
+		"dates" : "2013",
+		"url" : "https://www.udacity.com/course/cs101"
 	}
 	]
 }
@@ -97,22 +105,26 @@ var work = {
 	{
 		"employer" : "PMC",
 		"title" : "Engineer",
+		"location" : "Taichung, Taiwan",
 		"dates" : "Aug. 2012 - Present",
-		"description" : "building controller for industrial robot arm"
+		"description" : "Building controller for industrial robot arm"
 	},
 	{
 		"employer" : "National Taiwan University",
 		"title" : "Research Assistant",
+		"location" : "Taipei, Taiwan",
 		"dates" : "Jan. 2009 - Jul. 2010",
-		"description" : "building robot eyes mechanism"
+		"description" : "Building robot eyes mechanism"
 	}
 	]
 }
 
 var projects = {
 	"title" : "Demonstrate the application of 14-axis Dual-Arm Robot",
-	"dates" : "2014",
-	"description" : "As a member of developing team, I was in charge of",
+	"dates" : "Jan. 2014 - Present",
+	"description" : " As a member of developing team, I was in charge of: 1. Building controlling algorithm of multi-robot cooperative function (program synchronization, mater-slave) 2. Developing kinematic algorithm of 7-axis (redundant) robot arm 3. Creating part of function in human machine interface (HMI) ",
+	"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
+	"img" : "images/PMC sync.jpg",
 	"video" : [
 		"https://www.youtube.com/watch?v=C8_pQGrsqw8"
 	]
@@ -124,6 +136,11 @@ var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
 $("#header").append(formattedPic);
 
 //===================================================
+// add Wellcome message
+var formattedMsg = HTMLWelcomeMsg.replace("%data%", bio.WelcomeMessage);
+$("#header").append(formattedMsg);
+
+//===================================================
 // add if statement
 $("#header").append(HTMLskillsStart);
 if (bio.skills.length > 0) {
@@ -131,6 +148,7 @@ if (bio.skills.length > 0) {
 	$("#skills").append(formattedskill);
 }
 
+// add top contact info
 //$("#topContacts").append(HTMLcontactGeneric);
 var topConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
 $("#topContacts").append(topConMob);
@@ -142,6 +160,18 @@ var topConBlog = HTMLblog.replace("%data%", bio.contacts.blog);
 $("#topContacts").append(topConBlog);
 var topConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
 $("#topContacts").append(topConLoc);
+
+// add foot contact info
+var footConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
+$("#footerContacts").append(topConMob);
+var footConMail = HTMLemail.replace("%data%", bio.contacts.email);
+$("#footerContacts").append(topConMail);
+var footConGit = HTMLgithub.replace("%data%", bio.contacts.github);
+$("#footerContacts").append(topConGit);
+var footConBlog = HTMLblog.replace("%data%", bio.contacts.blog);
+$("#footerContacts").append(topConBlog);
+var footConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
+$("#footerContacts").append(topConLoc);
 
 /*
 // tesitng while loop
@@ -191,8 +221,10 @@ function displayWork() {
 		$(".work-entry:last").append(formattedEmployerTitle);
 
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 		$(".work-entry:last").append(formattedDates);
+		$(".work-entry:last").append(formattedLocation);
 		$(".work-entry:last").append(formattedDescription);
 	}
 }
@@ -220,12 +252,50 @@ projects.display = function(){
 
 	var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
 	var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
+	var formattedPic = HTMLprojectImage.replace("%data%", projects.img);
 	$(".project-entry:last").append(formattedDates);
 	$(".project-entry:last").append(formattedDescription);
+	$(".project-entry:last").append(formattedPic);
 
 };
 
 projects.display();
+
+education.displaySch = function(){
+	for(schl in education.schools){
+		$("#education").append(HTMLschoolStart);
+		var schName = HTMLschoolName.replace("%data%", education.schools[schl].name);
+		var schDeg = HTMLschoolDegree.replace("%data%", education.schools[schl].degree);
+		var schNameDeg = schName + schDeg;
+		$(".education-entry:last").append(schNameDeg);
+
+		var schDate = HTMLschoolDates.replace("%data%", education.schools[schl].dates);
+		var schCity = HTMLschoolLocation.replace("%data%", education.schools[schl].city);
+		var schMaj = HTMLschoolMajor.replace("%data%", education.schools[schl].major);
+		$(".education-entry:last").append(schDate);
+		$(".education-entry:last").append(schCity);
+		$(".education-entry:last").append(schMaj);
+	}
+};
+
+education.displayOnline = function(){
+	$(".education-entry:last").append(HTMLonlineClasses);
+	for(onl in education.onlineCourses){
+		var onlTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onl].title);
+		var onlSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onl].school);
+		var onlTitSch = onlTitle + onlSchool;
+		$(".education-entry:last").append(onlTitSch);
+
+		var onlDate = HTMLonlineDates.replace("%data%", education.onlineCourses[onl].dates);
+		$(".education-entry:last").append(onlDate);
+		var onlUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onl].url);
+		$(".education-entry:last").append(onlUrl);
+
+	}
+};
+
+education.displaySch();
+education.displayOnline();
 
 // add a map on resume
 $("#mapDiv").append(googleMap);
