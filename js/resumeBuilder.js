@@ -1,39 +1,8 @@
-//=======================================
-//var awesomeThoughts = "I am Robin and I am AWESOME!";
-//console.log(awesomeThoughts);
+/*
+	Using resumeBuilder.js file to edit material of your resume.
+*/
 
-//var funThoughts = awesomeThoughts.replace("AWESOME","FUN");
-//$("#main").append(funThoughts);
-//console.log(funThoughts);
-//========================================
-
-
-//=========================================
-// add bio array object
-/*var contact_info = "chienpinchen@gmail.com";
-var pic_URL = "images/me.jpg";
-var well_msg = "Hola";
-var skills = ["Robotics", "C++", "MATLAB", "Python"];
-
-var bio = {"name" : name, "role" : role, 
-"picture_URL" : pic_URL, "Wellcome_Message" : well_msg, 
-"skills" : skills};
-
-var work = {};
-work.position = "Engineer";
-work.employer = "PMC";
-work.years = 2;
-work.city = "Taichung";*/
-
-/*var education = {};
-education["name"] = "Columbia University";
-education["year"] = "2010";
-education["city"] = "New York";
-
-$("#main").append(bio.name);
-$("#main").append(work["position"]);
-$("#main").append(education.name);*/
-//===========================================
+// build material of resume in objects.
 var bio = {
 	"name" : "Chien-Pin Chen",
 	"role" : "Robotic Engineer",
@@ -119,38 +88,7 @@ var projects = {
 	]
 };
 
-// create variable 
-/*var name = "Chien-Pin Chen";
-var role = "Robotic Engineer";
-
-// replace
-var formattedName = HTMLheaderName.replace("%data%",name);
-var formattedRole = HTMLheaderRole.replace("%data%",role);
-
-// add to right place
-//$("#header").append(formattedName);
-//$("#header").append(formattedRole);
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-//===================================================
-// add picture
-var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
-$("#header").append(formattedPic);
-
-//===================================================
-// add Wellcome message
-var formattedMsg = HTMLWelcomeMsg.replace("%data%", bio.WelcomeMessage);
-$("#header").append(formattedMsg);
-
-//===================================================
-// add if statement
-$("#header").append(HTMLskillsStart);
-if (bio.skills.length > 0) {
-	var formattedskill = HTMLskills.replace("%data%", bio.skills);
-	$("#skills").append(formattedskill);
-}*/
+// Add javascript function to display the material (in objects) into index.hmtl
 
 bio.display = function(){
 	// Add name and role first
@@ -191,70 +129,9 @@ bio.display = function(){
 
 bio.display();
 
-// add top contact info
-//$("#topContacts").append(HTMLcontactGeneric);
-/*var topConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
-$("#topContacts").append(topConMob);
-var topConMail = HTMLemail.replace("%data%", bio.contacts.email);
-$("#topContacts").append(topConMail);
-var topConGit = HTMLgithub.replace("%data%", bio.contacts.github);
-$("#topContacts").append(topConGit);
-var topConBlog = HTMLblog.replace("%data%", bio.contacts.blog);
-$("#topContacts").append(topConBlog);
-var topConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
-$("#topContacts").append(topConLoc);
-
-// add foot contact info
-var footConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
-$("#footerContacts").append(topConMob);
-var footConMail = HTMLemail.replace("%data%", bio.contacts.email);
-$("#footerContacts").append(topConMail);
-var footConGit = HTMLgithub.replace("%data%", bio.contacts.github);
-$("#footerContacts").append(topConGit);
-var footConBlog = HTMLblog.replace("%data%", bio.contacts.blog);
-$("#footerContacts").append(topConBlog);
-var footConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
-$("#footerContacts").append(topConLoc);*/
-
-/*
-// tesitng while loop
-var cameron = {};
-cameron.job = "course dev";
-
-var courses = 0;
-while (cameron.job === "course dev"){
-	console.log("make course");
-	//makeCourse();
-	courses = courses + 1;
-	if(courses === 10){
-		cameron.job = "learning specialist";
-	}
-}
-
-console.log(cameron.job);
-
-// testing for loop
-for(var i=0; i < 9; i++){
-	console.log(i);
-}
-*/
-//======================================================
-// Add work experience by for loop
-/*for (job in work.jobs) {
-	$("#workExperience").append(HTMLworkStart);
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-	var formattedEmployerTitle = formattedEmployer + formattedTitle;
-	$(".work-entry:last").append(formattedEmployerTitle);
-
-	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-	$(".work-entry:last").append(formattedDates);
-	$(".work-entry:last").append(formattedDescription);
-}*/
 
 //=========================================================
-// Put work into function
+// Add function to display work, projects, and educations
 work.display = function() {
 	for (job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
@@ -336,7 +213,7 @@ education.displaySch();
 education.displayOnline();
 
 //=========================================================
-//international name
+//Add button to change to international name
 function inName(name){
 	name = name.trim().split(" ");
 	console.log(name);
@@ -348,7 +225,7 @@ function inName(name){
 
 $("#main").append(internationalizeButton);
 
-// add a map on resume
+// add a interactive map on resume
 $("#mapDiv").append(googleMap);
 
 // add github ribbon on my resume
