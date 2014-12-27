@@ -6,20 +6,7 @@
 //$("#main").append(funThoughts);
 //console.log(funThoughts);
 //========================================
-// create variable 
-var name = "Chien-Pin Chen";
-var role = "Robotic Engineer";
 
-// replace
-var formattedName = HTMLheaderName.replace("%data%",name);
-var formattedRole = HTMLheaderRole.replace("%data%",role);
-
-// add to right place
-//$("#header").append(formattedName);
-//$("#header").append(formattedRole);
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
 
 //=========================================
 // add bio array object
@@ -51,7 +38,7 @@ var bio = {
 	"name" : "Chien-Pin Chen",
 	"role" : "Robotic Engineer",
 	"contacts" : {
-		"mobile" : "201-314-0603",
+		"mobile" : "886-910-260-294",
 		"email" : "chienpinchen@gmail.com",
 		"github" : "RobinCPC",
 		"blog" : "http://chienpinchen.blogspot.tw/",
@@ -62,7 +49,7 @@ var bio = {
 		"Robotics", "C++", "MATLAB", "Python"
 	],
 	"bioPic" : "images/my.jpg"
-}
+};
 
 var education = {
 	"schools" : [
@@ -98,7 +85,7 @@ var education = {
 		"url" : "https://www.udacity.com/course/cs101"
 	}
 	]
-}
+};
 
 var work = {
 	"jobs" : [
@@ -117,18 +104,33 @@ var work = {
 		"description" : "Building robot eyes mechanism"
 	}
 	]
-}
+};
 
 var projects = {
 	"title" : "Demonstrate the application of 14-axis Dual-Arm Robot",
 	"dates" : "Jan. 2014 - Present",
 	"description" : " As a member of developing team, I was in charge of: 1. Building controlling algorithm of multi-robot cooperative function (program synchronization, mater-slave) 2. Developing kinematic algorithm of 7-axis (redundant) robot arm 3. Creating part of function in human machine interface (HMI) ",
 	"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
-	"img" : "images/PMC sync.jpg",
+	"img" : ["images/PMC sync.jpg", "images/Dual_Arm UI.jpg"],
 	"video" : [
 		"https://www.youtube.com/watch?v=C8_pQGrsqw8"
 	]
-}
+};
+
+// create variable 
+/*var name = "Chien-Pin Chen";
+var role = "Robotic Engineer";
+
+// replace
+var formattedName = HTMLheaderName.replace("%data%",name);
+var formattedRole = HTMLheaderRole.replace("%data%",role);
+
+// add to right place
+//$("#header").append(formattedName);
+//$("#header").append(formattedRole);
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
 
 //===================================================
 // add picture
@@ -146,11 +148,50 @@ $("#header").append(HTMLskillsStart);
 if (bio.skills.length > 0) {
 	var formattedskill = HTMLskills.replace("%data%", bio.skills);
 	$("#skills").append(formattedskill);
+}*/
+
+bio.display = function(){
+	// Add name and role first
+	var formattedName = HTMLheaderName.replace("%data%",bio.name);
+	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
+	// add picture
+	var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
+	$("#header").append(formattedPic);
+	// add Wellcome message
+	var formattedMsg = HTMLWelcomeMsg.replace("%data%", bio.WelcomeMessage);
+	$("#header").append(formattedMsg);
+	// add skills by if statement
+	$("#header").append(HTMLskillsStart);
+	if (bio.skills.length > 0) {
+		var formattedskill = HTMLskills.replace("%data%", bio.skills);
+		$("#skills").append(formattedskill);
+	}
+
+	// add top contact info
+	var ConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	$("#topContacts").append(ConMob);
+	$("#footerContacts").append(ConMob);
+	var ConMail = HTMLemail.replace("%data%", bio.contacts.email);
+	$("#topContacts").append(ConMail);
+	$("#footerContacts").append(ConMail);
+	var ConGit = HTMLgithub.replace("%data%", bio.contacts.github);
+	$("#topContacts").append(ConGit);
+	$("#footerContacts").append(ConGit);
+	var ConBlog = HTMLblog.replace("%data%", bio.contacts.blog);
+	$("#topContacts").append(ConBlog);
+	$("#footerContacts").append(ConBlog);
+	var ConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
+	$("#topContacts").append(ConLoc);
+	$("#footerContacts").append(ConLoc);
 }
+
+bio.display();
 
 // add top contact info
 //$("#topContacts").append(HTMLcontactGeneric);
-var topConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
+/*var topConMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
 $("#topContacts").append(topConMob);
 var topConMail = HTMLemail.replace("%data%", bio.contacts.email);
 $("#topContacts").append(topConMail);
@@ -171,7 +212,7 @@ $("#footerContacts").append(topConGit);
 var footConBlog = HTMLblog.replace("%data%", bio.contacts.blog);
 $("#footerContacts").append(topConBlog);
 var footConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
-$("#footerContacts").append(topConLoc);
+$("#footerContacts").append(topConLoc);*/
 
 /*
 // tesitng while loop
@@ -252,10 +293,14 @@ projects.display = function(){
 
 	var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
 	var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
-	var formattedPic = HTMLprojectImage.replace("%data%", projects.img);
+	//var formattedPic = HTMLprojectImage.replace("%data%", projects.img);
 	$(".project-entry:last").append(formattedDates);
 	$(".project-entry:last").append(formattedDescription);
-	$(".project-entry:last").append(formattedPic);
+	//$(".project-entry:last").append(formattedPic);
+	for(pic in projects.img){
+		var formattedPic = HTMLprojectImage.replace("%data%", projects.img[pic]);
+		$(".project-entry:last").append(formattedPic);
+	}
 
 };
 
