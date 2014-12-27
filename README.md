@@ -1,3 +1,5 @@
+**Link of gh-page: http://robincpc.github.io/frontend-nanodegree-resume/**
+
 ## How do I complete this project?
 
 1. Go to the [Javascript Basics course](https://www.udacity.com/course/ud804) and select "View Course Materials."
