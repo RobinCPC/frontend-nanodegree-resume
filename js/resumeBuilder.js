@@ -94,14 +94,16 @@ var work = {
 		"title" : "Engineer",
 		"location" : "Taichung, Taiwan",
 		"dates" : "Aug. 2012 - Present",
-		"description" : "Building controller for industrial robot arm"
+		"description" : "Building controller for industrial robot arm",
+		"url" : "http://www.pmc.org.tw/"
 	},
 	{
 		"employer" : "National Taiwan University",
 		"title" : "Research Assistant",
 		"location" : "Taipei, Taiwan",
 		"dates" : "Jan. 2009 - Jul. 2010",
-		"description" : "Building robot eyes mechanism"
+		"description" : "Building robot eyes mechanism",
+		"url" : "http://www.ntu.edu.tw/"
 	}
 	]
 };
@@ -253,12 +255,13 @@ for(var i=0; i < 9; i++){
 
 //=========================================================
 // Put work into function
-function displayWork() {
+work.display = function() {
 	for (job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 		var formattedEmployerTitle = formattedEmployer + formattedTitle;
+		formattedEmployerTitle = formattedEmployerTitle.replace("#", work.jobs[job].url);
 		$(".work-entry:last").append(formattedEmployerTitle);
 
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
@@ -270,33 +273,20 @@ function displayWork() {
 	}
 }
 
-displayWork();
+work.display();
 
-//=========================================================
-//international name
-function inName(name){
-	name = name.trim().split(" ");
-	console.log(name);
-	name[1] = name[1].toUpperCase();
-	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-
-	return name[0] + " " + name[1];
-}
-
-$("#main").append(internationalizeButton);
 
 projects.display = function(){
 
 	$("#projects").append(HTMLprojectStart);
 	var formattedTitle = HTMLprojectTitle.replace("%data%", projects.title);
+	formattedTitle = formattedTitle.replace("#", projects.url);
 	$(".project-entry:last").append(formattedTitle);
 
 	var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
 	var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
-	//var formattedPic = HTMLprojectImage.replace("%data%", projects.img);
 	$(".project-entry:last").append(formattedDates);
 	$(".project-entry:last").append(formattedDescription);
-	//$(".project-entry:last").append(formattedPic);
 	for(pic in projects.img){
 		var formattedPic = HTMLprojectImage.replace("%data%", projects.img[pic]);
 		$(".project-entry:last").append(formattedPic);
@@ -312,6 +302,7 @@ education.displaySch = function(){
 		var schName = HTMLschoolName.replace("%data%", education.schools[schl].name);
 		var schDeg = HTMLschoolDegree.replace("%data%", education.schools[schl].degree);
 		var schNameDeg = schName + schDeg;
+		schNameDeg = schNameDeg.replace("#", education.schools[schl].url);
 		$(".education-entry:last").append(schNameDeg);
 
 		var schDate = HTMLschoolDates.replace("%data%", education.schools[schl].dates);
@@ -329,11 +320,13 @@ education.displayOnline = function(){
 		var onlTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onl].title);
 		var onlSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onl].school);
 		var onlTitSch = onlTitle + onlSchool;
+		onlTitSch = onlTitSch.replace("#", education.onlineCourses[onl].url);
 		$(".education-entry:last").append(onlTitSch);
 
 		var onlDate = HTMLonlineDates.replace("%data%", education.onlineCourses[onl].dates);
 		$(".education-entry:last").append(onlDate);
 		var onlUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onl].url);
+		onlUrl = onlUrl.replace("#", education.onlineCourses[onl].url);
 		$(".education-entry:last").append(onlUrl);
 
 	}
@@ -342,5 +335,22 @@ education.displayOnline = function(){
 education.displaySch();
 education.displayOnline();
 
+//=========================================================
+//international name
+function inName(name){
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+
+	return name[0] + " " + name[1];
+}
+
+$("#main").append(internationalizeButton);
+
 // add a map on resume
 $("#mapDiv").append(googleMap);
+
+// add github ribbon on my resume
+var myRibbon = githubribbon.replace("you", bio.contacts.github);
+$("#gitRib").append(myRibbon);
