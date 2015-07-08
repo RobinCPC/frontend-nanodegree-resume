@@ -78,13 +78,31 @@ var work = {
 };
 
 var projects = {
-	"title" : "Demonstrate the application of 14-axis Dual-Arm Robot",
-	"dates" : "Jan. 2014 - Present",
-	"description" : " As a member of developing team, I was in charge of: 1. Building controlling algorithm of multi-robot cooperative function (program synchronization, mater-slave) 2. Developing kinematic algorithm of 7-axis (redundant) robot arm 3. Creating part of function in human machine interface (HMI) ",
-	"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
-	"img" : ["images/PMC sync.jpg", "images/Dual_Arm UI.jpg"],
-	"video" : [
-		"https://www.youtube.com/embed/C8_pQGrsqw8", "https://www.youtube.com/embed/cYK7M2Y8dfA", "https://www.youtube.com/embed/MwkFAOxRlG4"
+	"lists"	: [
+	{
+		"title" : "Demonstrate the application of 14-axis Dual-Arm Robot",
+		"dates" : "Jan. 2014 - July 2014",
+		"description" : " As a member of developing team, I was in charge of: <p></p>1. Building controlling algorithm of multi-robot cooperative function (program synchronization, mater-slave) <p></p>2. Developing kinematic algorithm of 7-axis (redundant) robot arm <p></p>3. Creating part of function in human machine interface (HMI) ",
+		"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
+		"img" : ["images/PMC sync.jpg", "images/Dual_Arm UI.jpg"],
+		"video" : [ "https://www.youtube.com/embed/C8_pQGrsqw8", "https://www.youtube.com/embed/cYK7M2Y8dfA", "https://www.youtube.com/embed/MwkFAOxRlG4"]
+	}, 
+	{
+		"title"	: "Teach Pendant for PMC Robot Controller",
+		"dates"	: "Feb. 2015 - June 2015",
+		"description"	: "<p></p>1. Develop user interface (HMI) of teach pendant and improve real-time system of Controller<p></p>2. Manage developing progress and version control by Git<p></p>3. Use Scintilla to improve the interface of PMC Robot Language Editor<p></p>4. Write proposal and acquire funding from Government",
+		"url"	: "https://www.youtube.com/watch?v=JmXIHzVw23U",
+		"img"	: ["value"],
+		"video"	: ["https://www.youtube.com/embed/JmXIHzVw23U"]     
+	},
+	{
+		"title"	: "Development Device, Control Sytem and Simulation Software of Robot hand",
+		"dates"	: "Oct. 2012 - Dec. 2014",
+		"description"	: "<p></p>1. Coordinate with colleagues, supervisor, and collaborative Lab, hosted by Prof. Kawasaki & Mouri at Gifu University, to develop mechanism and control system of Robot hand<p></p>2. Develop robot hand simulation (grasping motion planning and extracting info from CAD model of work pieces)<p></p>3. Write patent for searching method of robot hand grasping <p></p>4. Write paper for the design of robot hand",
+		"url"	: "https://www.youtube.com/watch?v=4CNTrfGQ1rY",
+		"img"	: ["value"],
+		"video"	: ["https://www.youtube.com/embed/4CNTrfGQ1rY"]
+	}
 	]
 };
 
@@ -154,8 +172,28 @@ work.display();
 
 
 projects.display = function(){
+	for (list in projects.lists) {
+		$("#projects").append(HTMLprojectStart);
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.lists[list].title);
+		formattedTitle = formattedTitle.replace("#", projects.lists[list].url);
+		$(".project-entry:last").append(formattedTitle);
 
-	$("#projects").append(HTMLprojectStart);
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.lists[list].dates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.lists[list].description);
+		$(".project-entry:last").append(formattedDates);
+		$(".project-entry:last").append(formattedDescription);
+		/*for(pic in projects.lists[list].img){
+			var formattedPic = HTMLprojectImage.replace("%data%", projects.lists[list].img[pic]);
+			$(".project-entry:last").append(formattedPic);
+		}
+		$(".project-entry:last").append('<p></p>'); */
+		for(clip in projects.lists[list].video){
+			var formattedClip = HTMLprojectVideo.replace("%data%", projects.lists[list].video[clip]);
+			$(".project-entry:last").append(formattedClip);
+		}
+	}
+
+	/*$("#projects").append(HTMLprojectStart);
 	var formattedTitle = HTMLprojectTitle.replace("%data%", projects.title);
 	formattedTitle = formattedTitle.replace("#", projects.url);
 	$(".project-entry:last").append(formattedTitle);
@@ -164,15 +202,16 @@ projects.display = function(){
 	var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
 	$(".project-entry:last").append(formattedDates);
 	$(".project-entry:last").append(formattedDescription);
-	/*for(pic in projects.img){
+	for(pic in projects.img){
 		var formattedPic = HTMLprojectImage.replace("%data%", projects.img[pic]);
 		$(".project-entry:last").append(formattedPic);
 	}
-	$(".project-entry:last").append('<p></p>'); */
+	$(".project-entry:last").append('<p></p>');
 	for(clip in projects.video){
 		var formattedClip = HTMLprojectVideo.replace("%data%", projects.video[clip]);
 		$(".project-entry:last").append(formattedClip);
-	}
+	}*/
+
 };
 
 projects.display();
