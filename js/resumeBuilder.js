@@ -38,8 +38,7 @@ var education = {
 			"dates" : 2011,
 			"url"	: "http://www.columbia.edu/"
 		}
-	]
-	,
+	],
 	"onlineCourses" : [
 	{
 		"title" : "JavaScript Basic",
@@ -85,7 +84,7 @@ var projects = {
 		"description" : " As a member of developing team, I was in charge of: <p></p>1. Building controlling algorithm of multi-robot cooperative function (program synchronization, mater-slave) <p></p>2. Developing kinematic algorithm of 7-axis (redundant) robot arm <p></p>3. Creating part of function in human machine interface (HMI) ",
 		"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
 		"img" : ["images/PMC sync.jpg", "images/Dual_Arm UI.jpg"],
-		"video" : [ "https://www.youtube.com/embed/C8_pQGrsqw8", "https://www.youtube.com/embed/cYK7M2Y8dfA", "https://www.youtube.com/embed/MwkFAOxRlG4"]
+		"video" : [ "https://www.youtube.com/embed/C8_pQGrsqw8", "https://www.youtube.com/embed/cYK7M2Y8dfA"]
 	}, 
 	{
 		"title"	: "Teach Pendant for PMC Robot Controller",
@@ -143,7 +142,7 @@ bio.display = function(){
 	var ConLoc = HTMLlocation.replace("%data%", bio.contacts.location);
 	$("#topContacts").append(ConLoc);
 	$("#footerContacts").append(ConLoc);
-}
+};
 
 bio.display();
 
@@ -151,7 +150,7 @@ bio.display();
 //=========================================================
 // Add function to display work, projects, and educations
 work.display = function() {
-	for (job in work.jobs) {
+	for (var job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -166,13 +165,13 @@ work.display = function() {
 		$(".work-entry:last").append(formattedLocation);
 		$(".work-entry:last").append(formattedDescription);
 	}
-}
+};
 
 work.display();
 
 
 projects.display = function(){
-	for (list in projects.lists) {
+	for (var list in projects.lists) {
 		$("#projects").append(HTMLprojectStart);
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.lists[list].title);
 		formattedTitle = formattedTitle.replace("#", projects.lists[list].url);
@@ -187,37 +186,18 @@ projects.display = function(){
 			$(".project-entry:last").append(formattedPic);
 		}
 		$(".project-entry:last").append('<p></p>'); */
-		for(clip in projects.lists[list].video){
+		for(var clip in projects.lists[list].video){
 			var formattedClip = HTMLprojectVideo.replace("%data%", projects.lists[list].video[clip]);
 			$(".project-entry:last").append(formattedClip);
 		}
 	}
-
-	/*$("#projects").append(HTMLprojectStart);
-	var formattedTitle = HTMLprojectTitle.replace("%data%", projects.title);
-	formattedTitle = formattedTitle.replace("#", projects.url);
-	$(".project-entry:last").append(formattedTitle);
-
-	var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
-	var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
-	$(".project-entry:last").append(formattedDates);
-	$(".project-entry:last").append(formattedDescription);
-	for(pic in projects.img){
-		var formattedPic = HTMLprojectImage.replace("%data%", projects.img[pic]);
-		$(".project-entry:last").append(formattedPic);
-	}
-	$(".project-entry:last").append('<p></p>');
-	for(clip in projects.video){
-		var formattedClip = HTMLprojectVideo.replace("%data%", projects.video[clip]);
-		$(".project-entry:last").append(formattedClip);
-	}*/
 
 };
 
 projects.display();
 
 education.displaySch = function(){
-	for(schl in education.schools){
+	for(var schl in education.schools){
 		$("#education").append(HTMLschoolStart);
 		var schName = HTMLschoolName.replace("%data%", education.schools[schl].name);
 		var schDeg = HTMLschoolDegree.replace("%data%", education.schools[schl].degree);
@@ -236,7 +216,7 @@ education.displaySch = function(){
 
 education.displayOnline = function(){
 	$(".education-entry:last").append(HTMLonlineClasses);
-	for(onl in education.onlineCourses){
+	for(var onl in education.onlineCourses){
 		var onlTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onl].title);
 		var onlSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onl].school);
 		var onlTitSch = onlTitle + onlSchool;
