@@ -84,7 +84,7 @@ var projects = {
 	"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
 	"img" : ["images/PMC sync.jpg", "images/Dual_Arm UI.jpg"],
 	"video" : [
-		"https://www.youtube.com/watch?v=C8_pQGrsqw8"
+		"https://www.youtube.com/embed/C8_pQGrsqw8", "https://www.youtube.com/embed/cYK7M2Y8dfA", "https://www.youtube.com/embed/MwkFAOxRlG4"
 	]
 };
 
@@ -164,11 +164,15 @@ projects.display = function(){
 	var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
 	$(".project-entry:last").append(formattedDates);
 	$(".project-entry:last").append(formattedDescription);
-	for(pic in projects.img){
+	/*for(pic in projects.img){
 		var formattedPic = HTMLprojectImage.replace("%data%", projects.img[pic]);
 		$(".project-entry:last").append(formattedPic);
 	}
-
+	$(".project-entry:last").append('<p></p>'); */
+	for(clip in projects.video){
+		var formattedClip = HTMLprojectVideo.replace("%data%", projects.video[clip]);
+		$(".project-entry:last").append(formattedClip);
+	}
 };
 
 projects.display();
