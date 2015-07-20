@@ -13,9 +13,9 @@ var bio = {
 		"blog" : "http://chienpinchen.blogspot.tw/",
 		"location" : "Taiwan"
 	},
-	"WelcomeMessage" : "Hello! I am an engineer at Robotic Control Department of Precision Machinery Research Development Center in Taiwan. I am working on developing kinematic algorithms of robot arm and CAD-Based Application.",
+	"WelcomeMessage" : "Hello! I am an engineer at Robotic Control Department of Precision Machinery Research Development Center in Taiwan. I am working on developing kinematic algorithms of robot arm, PC-Based Robot Controller, and CAD-Based Application.",
 	"skills" : [
-		"Robotics", "C++", "MATLAB", "Python"
+		"Robotics", "C++", "MATLAB", "Git", "Python", "JavaScript"
 	],
 	"bioPic" : "images/my.jpg"
 };
@@ -41,16 +41,22 @@ var education = {
 	],
 	"onlineCourses" : [
 	{
+		"title" : "Intro to Computer Science",
+		"school" : "Udacity",
+		"dates" : 2013,
+		"url" : "https://www.udacity.com/course/cs101"
+	},
+	{
 		"title" : "JavaScript Basic",
 		"school" : "Udacity",
 		"dates" : 2014,
 		"url" : "http://www.udacity.com/course/ud804"
 	},
 	{
-		"title" : "Intro to Computer Science",
+		"title" : "Interactive 3D Graphics",
 		"school" : "Udacity",
-		"dates" : "2013",
-		"url" : "https://www.udacity.com/course/cs101"
+		"dates" : 2015,
+		"url" : "https://www.udacity.com/course/interactive-3d-graphics--cs291"
 	}
 	]
 };
@@ -61,8 +67,8 @@ var work = {
 		"employer" : "PMC",
 		"title" : "Engineer",
 		"location" : "Taichung, Taiwan",
-		"dates" : "Aug. 2012 - Present",
-		"description" : "Building controller for industrial robot arm",
+		"dates" : "Aug. 2012 - Jun. 2015",
+		"description" : "Building PC-Based Controller for Industrial Robot Arm",
 		"url" : "http://www.pmc.org.tw/"
 	},
 	{
@@ -97,7 +103,7 @@ var projects = {
 	{
 		"title"	: "Development Device, Control Sytem and Simulation Software of Robot hand",
 		"dates"	: "Oct. 2012 - Dec. 2014",
-		"description"	: "<p></p>1. Coordinate with colleagues, supervisor, and collaborative Lab, hosted by Prof. Kawasaki & Mouri at Gifu University, to develop mechanism and control system of Robot hand<p></p>2. Develop robot hand simulation (grasping motion planning and extracting info from CAD model of work pieces)<p></p>3. Write patent for searching method of robot hand grasping <p></p>4. Write paper for the design of robot hand",
+		"description"	: "<p></p>1. Coordinate with colleagues, supervisor, and collaborative Lab, hosted by Prof. Kawasaki & Mouri at Gifu University, to develop mechanism and control system of Robot hand<p></p>2. Develop robot hand simulator (grasping motion planning and extracting info from CAD model of work pieces)<p></p>3. File patent for searching method of robot hand grasping <p></p>4. Publish paper for the design of robot hand",
 		"url"	: "https://www.youtube.com/watch?v=4CNTrfGQ1rY",
 		"img"	: ["value"],
 		"video"	: ["https://www.youtube.com/embed/4CNTrfGQ1rY"]
@@ -225,9 +231,10 @@ education.displayOnline = function(){
 
 		var onlDate = HTMLonlineDates.replace("%data%", education.onlineCourses[onl].dates);
 		$(".education-entry:last").append(onlDate);
-		var onlUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onl].url);
+		$(".education-entry:last").append('<p><br></p>');
+		/*var onlUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onl].url);
 		onlUrl = onlUrl.replace("#", education.onlineCourses[onl].url);
-		$(".education-entry:last").append(onlUrl);
+		$(".education-entry:last").append(onlUrl);*/
 
 	}
 };
