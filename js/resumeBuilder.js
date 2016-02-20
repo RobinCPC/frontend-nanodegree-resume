@@ -5,17 +5,19 @@
 // build material of resume in objects.
 var bio = {
 	"name" : "Chien-Pin Chen",
-	"role" : "Robotic Engineer",
+	"role" : "Computer Engineering",
 	"contacts" : {
-		"mobile" : "886-910-260-294",
+		"mobile" : "1-561-324-9589",
 		"email" : "chienpinchen@gmail.com",
 		"github" : "RobinCPC",
 		"blog" : "http://chienpinchen.blogspot.tw/",
-		"location" : "Taiwan"
+		"location" : "Santa Cruz, CA"
 	},
-	"WelcomeMessage" : "Hello! I am an engineer at Robotic Control Department of Precision Machinery Research Development Center in Taiwan. I am working on developing kinematic algorithms of robot arm, PC-Based Robot Controller, and CAD-Based Application.",
+	"WelcomeMessage" : "Software developer with industrial experience on developing PC-based industrial robot controller, \
+	kinematic algorithms of high degree of freedom robot arm, and CAD-based Application/Simulation. Currently, a master student \
+	of Computer Engineering in UC Santa Cruz. I am looking for internship opportunity as a robotic or software engineer for summer 2016",
 	"skills" : [
-		"Robotics", "C++", "MATLAB", "Git", "Python", "JavaScript"
+		"C++", "Python", "Robotics", "Git", "MATLAB", "JavaScript"
 	],
 	"bioPic" : "images/my.jpg"
 };
@@ -23,20 +25,28 @@ var bio = {
 var education = {
 	"schools" : [
 		{
-			"name" : "National Taiwan University",
-			"city" : "Taipei, Taiwan",
-			"degree" : "BS",
-			"major" : ["Mechanical Engineer"],
-			"dates" : 2007,
-			"url" : "http://www.ntu.edu.tw/"
+			"name" : "University of California, Santa Cruz",
+			"city" : "Santa Cruz, California, US",
+			"degree" : "MS",
+			"major" : ["Computer Engineering"],
+			"dates" : 2017,
+			"url"	: "http://www.ucsc.edu/"
 		},
 		{
 			"name" : "Columbia University",
 			"city" : "New York City, New York, US",
 			"degree" : "MS",
-			"major" : ["Mechanical Engineer"],
+			"major" : ["Mechanical Engineering"],
 			"dates" : 2011,
 			"url"	: "http://www.columbia.edu/"
+		},
+		{
+			"name" : "National Taiwan University",
+			"city" : "Taipei, Taiwan",
+			"degree" : "BS",
+			"major" : ["Mechanical Engineering"],
+			"dates" : 2007,
+			"url" : "http://www.ntu.edu.tw/"
 		}
 	],
 	"onlineCourses" : [
@@ -85,14 +95,6 @@ var work = {
 var projects = {
 	"lists"	: [
 	{
-		"title" : "Demonstrate the application of 14-axis Dual-Arm Robot",
-		"dates" : "Jan. 2014 - July 2014",
-		"description" : " As a member of developing team, I was in charge of: <p></p>1. Building controlling algorithm of multi-robot cooperative function (program synchronization, mater-slave) <p></p>2. Developing kinematic algorithm of 7-axis (redundant) robot arm <p></p>3. Creating part of function in human machine interface (HMI) ",
-		"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
-		"img" : ["images/PMC sync.jpg", "images/Dual_Arm UI.jpg"],
-		"video" : [ "https://www.youtube.com/embed/C8_pQGrsqw8", "https://www.youtube.com/embed/cYK7M2Y8dfA"]
-	}, 
-	{
 		"title"	: "Teach Pendant for PMC Robot Controller",
 		"dates"	: "Feb. 2015 - June 2015",
 		"description"	: "<p></p>1. Develop user interface (HMI) of teach pendant and improve real-time system of Controller<p></p>2. Manage developing progress and version control by Git<p></p>3. Use Scintilla to improve the interface of PMC Robot Language Editor<p></p>4. Write proposal and acquire funding from Government",
@@ -100,6 +102,14 @@ var projects = {
 		"img"	: ["value"],
 		"video"	: ["https://www.youtube.com/embed/JmXIHzVw23U"]     
 	},
+	{
+		"title" : "Demonstrate the application of 14-axis Dual-Arm Robot",
+		"dates" : "Jan. 2014 - July 2014",
+		"description" : " As a member of developing team, I was in charge of: <p></p>1. Building controlling algorithm of multi-robot cooperative function (program synchronization, mater-slave) <p></p>2. Developing kinematic algorithm of 7-axis (redundant) robot arm <p></p>3. Creating part of function in human machine interface (HMI) ",
+		"url" : "http://chienpinchen.blogspot.tw/2014/08/pmc-14-axis-industrial-dual-arm-robot.html",
+		"img" : ["images/PMC sync.jpg", "images/Dual_Arm UI.jpg"],
+		"video" : [ "https://www.youtube.com/embed/C8_pQGrsqw8", "https://www.youtube.com/embed/cYK7M2Y8dfA"]
+	}, 
 	{
 		"title"	: "Development Device, Control Sytem and Simulation Software of Robot hand",
 		"dates"	: "Oct. 2012 - Dec. 2014",

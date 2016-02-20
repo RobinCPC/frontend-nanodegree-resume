@@ -1,4 +1,12 @@
-**Link of gh-page: http://robincpc.github.io/frontend-nanodegree-resume/**
+Hi,
+I took JavaScript Basics on Udacity and used the template from course material to build my interactive resume.
+I also took interactive 3D graphics on Udacity to build virtual robot arm wit WebGL in my resume.
+
+**Here's the link to my interactive resume: http://robincpc.github.io/frontend-nanodegree-resume/**
+
+
+
+Below is original intruction from the course.
 
 ## How do I complete this project?
 
